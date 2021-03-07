@@ -5,7 +5,7 @@ M = lambda a: a(a)  # Mockingbird
 K = lambda a: lambda b: a  # Kestrel (Haskell: const)
 KI = lambda x: lambda y: y  # Kite (Haskell: const id)
 # KI = lambda x: lambda y: K(I)(x)(y)  # Also Kite (KI-combinator)
-C = lambda f: lambda a: lambda b: f(b)(a)
+C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
 
 
 def test_identity_or_1_is_1():
