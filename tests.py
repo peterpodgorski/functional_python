@@ -1,7 +1,7 @@
 import pytest
 
 I = lambda a: a  # Identity/Idiot (Haskell: id)
-M = lambda a: a(a)  # Mockingbird
+M = lambda a: a(a)  # Mockingbird, aka self-application
 K = lambda a: lambda b: a  # Kestrel (Haskell: const)
 KI = lambda a: lambda b: b  # Kite (Haskell: const id)
 # KI = lambda a: lambda b: K(I)(a)(b)  # Also Kite (KI-combinator)
@@ -37,6 +37,7 @@ OR(T)(F) -> T(T)(F) -> T, because p is T, which selects 1st
 OR(T)(F) -> F(F)(T) -> T, because p is F, which selects 2nd
 """
 OR = lambda p: lambda q: p(p)(q)
+# OR = lambda p: lambda q: M(p)(q)  # also OR, but p(p) replaced by self-application
 
 
 def test_identity_or_1_is_1():
@@ -50,6 +51,20 @@ class Test_Mockingbird_repeats_the_argument:
     def test_of_Mockingbird_explodes_because_Python(self):
         with pytest.raises(RuntimeError):
             assert M(M)
+
+
+class Test_Mockingbird_once_removed_acting_as_OR:
+    def test_of_T_T_is_T(self):
+        assert M(T)(T) == T
+
+    def test_of_T_F_is_T(self):
+        assert M(T)(F) == T
+
+    def test_of_F_T_is_T(self):
+        assert M(F)(T) == T
+
+    def test_of_F_F_is_F(self):
+        assert M(F)(F) == F
 
 
 class Test_Kestrel_gives_back_first_argument:
