@@ -91,13 +91,13 @@ class Test_Or:
 
 class Test_equality:
     def test_of_T_T_is_T(self):
-        assert EQ(T)(T) == T
+        assert BEQ(T)(T) == T
 
     def test_of_T_F_is_F(self):
-        assert EQ(T)(F) == F
+        assert BEQ(T)(F) == F
 
     def test_of_F_T_is_F(self):
-        assert EQ(F)(T) == F
+        assert BEQ(F)(T) == F
 
     def test_of_F_F_is_T(self):
-        assert EQ(F)(F) == T
+        assert BEQ(F)(F) == T

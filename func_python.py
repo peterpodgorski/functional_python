@@ -43,9 +43,9 @@ is both the first and second parameter, which is negated if it happens
 to be selected as the second one.
 
    p  q     p q      q
-EQ(T)(T) -> T(T)(NOT(T)) -> p, being T,selects the first q, which happens to be T
-EQ(T)(F) -> T(F)(NOT(F)) -> p, being T, selects the first q, which happens to be F
-EQ(F)(T) -> F(T)(NOT(T)) -> F(T)(F) -> p, being F, selects the second q, which happens to be negated from T -> F
-EQ(F)(F) -> F(F)(NOT(F)) -> F(F)(T) -> p, being F, selects the second q, which happens to be negated from F -> T
+BEQ(T)(T) -> T(T)(NOT(T)) -> p, being T,selects the first q, which happens to be T
+BEQ(T)(F) -> T(F)(NOT(F)) -> p, being T, selects the first q, which happens to be F
+BEQ(F)(T) -> F(T)(NOT(T)) -> F(T)(F) -> p, being F, selects the second q, which happens to be negated from T -> F
+BEQ(F)(F) -> F(F)(NOT(F)) -> F(F)(T) -> p, being F, selects the second q, which happens to be negated from F -> T
 """
-EQ = lambda p: lambda q: p(q)(NOT(q))
+BEQ = lambda p: lambda q: p(q)(NOT(q))
