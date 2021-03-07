@@ -16,7 +16,27 @@ F = KI  # False
 NOT = lambda b: b(F)(T)  # where b is T or F
 C_NOT = lambda b: C(b)
 
-A = lambda p: lambda q: p(q)(p)  #
+"""
+AND(T)(T) -> T(T)(T) -> T
+AND(F)(F) -> F(F)(F) -> F
+but...
+    p  q     p q  p     q
+AND(T)(F) -> T(F)(T) -> F, because p is T, which selects 1st, which is q, which is F
+    p  q     p q  p     q
+AND(T)(F) -> F(T)(F) -> F, because p is F, which selects 2nd, which is p, which is F
+"""
+AND = lambda p: lambda q: p(q)(p)
+
+"""
+OR(T)(T) -> T(T)(T) -> T
+OR(F)(F) -> F(F)(F) -> F
+but...
+   p  q     p p  q     q
+OR(T)(F) -> T(T)(F) -> T, because p is T, which selects 1st
+   p  q     p p  q     q
+OR(T)(F) -> F(F)(T) -> T, because p is F, which selects 2nd
+"""
+OR = lambda p: lambda q: p(p)(q)
 
 
 def test_identity_or_1_is_1():
@@ -65,13 +85,27 @@ class Test_Cardinal_impl_of_NOT:
 
 class Test_And:
     def test_of_T_T_is_T(self):
-        assert A(T)(T) == T
+        assert AND(T)(T) == T
 
     def test_of_T_F_is_F(self):
-        assert A(T)(F) == F
+        assert AND(T)(F) == F
 
     def test_of_F_T_is_F(self):
-        assert A(F)(T) == F
+        assert AND(F)(T) == F
 
     def test_of_F_F_is_F(self):
-        assert A(F)(F) == F
+        assert AND(F)(F) == F
+
+
+class Test_Or:
+    def test_of_T_T_is_T(self):
+        assert OR(T)(T) == T
+
+    def test_of_T_F_is_T(self):
+        assert OR(T)(F) == T
+
+    def test_of_F_T_is_T(self):
+        assert OR(F)(T) == T
+
+    def test_of_F_F_is_F(self):
+        assert OR(F)(F) == F
