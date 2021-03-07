@@ -137,3 +137,13 @@ class Test_function_composition_slash_pipeline:
 class Test_addition:
     def test_add_3_and_4_gives_7(self):
         assert pynum(add(n3)(n4)) == 7
+
+
+class Test_multiplication:
+    def test_mul_3_and_4_gives_12(self):
+        assert pynum(mul(n3)(n4)) == 12
+
+
+class Test_exponentiation:  # noqa
+    def test_exp_2_and_3_is_9(self):
+        assert pynum(exp(n2)(n3)) == 8
