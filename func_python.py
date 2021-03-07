@@ -53,3 +53,5 @@ BEQ = lambda p: lambda q: p(q)(NOT(q))
 once = lambda f: lambda a: f(a)
 twice = lambda f: lambda a: f(f(a))
 thrice = lambda f: lambda a: f(f(f(a)))
+zero = lambda f: lambda a: a
+# zero = lambda f: lambda a: F(f)(a)  # also zero

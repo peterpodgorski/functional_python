@@ -112,3 +112,6 @@ class Test_cardinals:
 
     def test_NOT_applied_thrice_to_T_gives_F(self):
         assert thrice(NOT)(T) == F
+
+    def test_NOT_applied_zero_times_to_T_gives_T(self):
+        assert zero(NOT)(T) == T
