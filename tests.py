@@ -3,17 +3,18 @@ import pytest
 I = lambda a: a  # Identity/Idiot (Haskell: id)
 M = lambda a: a(a)  # Mockingbird
 K = lambda a: lambda b: a  # Kestrel (Haskell: const)
-KI = lambda x: lambda y: y  # Kite (Haskell: const id)
-# KI = lambda x: lambda y: K(I)(x)(y)  # Also Kite (KI-combinator)
+KI = lambda a: lambda b: b  # Kite (Haskell: const id)
+# KI = lambda a: lambda b: K(I)(a)(b)  # Also Kite (KI-combinator)
 C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
-# KI = lambda x: lambda y: C(K)(x)(y)  # Also Kite
+# KI = lambda a: lambda b: C(K)(a)(b)  # Also Kite
 
 # These are obtained by translating `lambda x, y: x if x else y` into
 # pre-existing combinators
 T = K  # True
 F = KI  # False
 
-Not = lambda b: b(F)(T)  # where b is T or F
+NOT = lambda b: b(F)(T)  # where b is T or F
+C_NOT = lambda b: C(b)
 
 
 def test_identity_or_1_is_1():
@@ -49,7 +50,12 @@ class Test_Cardinal_flips_arguments_around:
 
 class Test_negation_selects_the_other_boolean:
     def test_of_T_is_F(self):
-        assert Not(T) == F
+        assert NOT(T) == F
 
     def test_of_F_is_T(self):
-        assert Not(F) == T
+        assert NOT(F) == T
+
+
+class Test_Cardinal_impl_of_NOT:
+    def test_C_NOT_of_T_of_1_2_behaves_like_F_of_1_2(self):
+        assert C_NOT(T)(1)(2) == F(1)(2)
