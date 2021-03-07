@@ -198,3 +198,14 @@ class Test_less_equal:  # noqa
 
     def test_LEQ_5_6_is_True(self):
         assert LEQ(n5)(n6) == T
+
+
+class Test_equal:  # noqa
+    def test_EQ_5_5_is_True(self):
+        assert EQ(n5)(n5) == T
+
+    def test_EQ_5_4_is_False(self):
+        assert EQ(n5)(n4) == F
+
+    def test_EQ_4_5_is_False(self):
+        assert EQ(n4)(n5) == F
