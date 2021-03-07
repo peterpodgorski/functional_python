@@ -103,7 +103,7 @@ class Test_equality:
         assert BEQ(F)(F) == T
 
 
-class Test_cardinals:
+class Test_Church_encodings_for_numerals:
     def test_NOT_applied_once_to_T_gives_F(self):
         assert once(NOT)(T) == F
 
