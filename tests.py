@@ -6,6 +6,12 @@ K = lambda a: lambda b: a  # Kestrel (Haskell: const)
 KI = lambda x: lambda y: y  # Kite (Haskell: const id)
 # KI = lambda x: lambda y: K(I)(x)(y)  # Also Kite (KI-combinator)
 C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
+# KI = lambda x: lambda y: C(K)(x)(y)  # Also Kite
+
+# These are obtained by translating `lambda x, y: x if x else y` into
+# pre-existing combinators
+T = K  # True
+F = KI  # False
 
 
 def test_identity_or_1_is_1():
