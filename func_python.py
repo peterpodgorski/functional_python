@@ -60,6 +60,12 @@ zero = lambda f: lambda a: a
 
 succ = lambda n: lambda f: lambda a: f(n(f)(a))
 
+"""
+The below is also a successor!
+Why it works? Because we're missing "a" here, which will get tugged along by B.
+"""
+# succ = lambda n: lambda f: B(f)(n(f))
+
 pynum = lambda n: n(lambda x: x + 1)(0)
 
 n0 = zero
@@ -68,3 +74,12 @@ n2 = twice
 n3 = thrice
 n4 = succ(n3)
 n5 = succ(n4)
+
+"""
+Addition means adding 1 the number of times specified by n to k.
+Adding 1 is just successor.
+Numeral "k" itself is implemented as "do f a prescribed number of times to a".
+    -> twice = lambda f: lambda a: f(f(a))
+So "n + k" is "n successions on k"
+"""
+add = lambda n: lambda k: n(succ)(k)

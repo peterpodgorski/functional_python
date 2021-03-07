@@ -132,3 +132,8 @@ class Test_function_composition_slash_pipeline:
 
     def test_of_succ_succ_n1_is_3_same_as_succ_of_succ_of_n1(self):
         assert pynum(B(succ)(succ)(n1)) == pynum(succ(succ(n1))) == pynum(n3)
+
+
+class Test_addition:
+    def test_add_3_and_4_gives_7(self):
+        assert pynum(add(n3)(n4)) == 7
