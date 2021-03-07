@@ -110,3 +110,6 @@ n6 = succ(n5)
 n7 = add(n3)(n4)
 n8 = add(n4)(n4)
 n9 = add(n4)(n5)
+
+
+V = lambda a: lambda b: lambda f: f(a)(b)

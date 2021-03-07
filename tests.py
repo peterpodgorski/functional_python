@@ -161,3 +161,17 @@ class Test_is_zero:  # noqa
 
     def test_of_3_is_false(self):
         assert iszero(n3) == F
+
+
+class Test_vireo_closure:
+    def test_of_I_and_M_returns_I_when_given_K(self):
+        vim = V(I)(M)
+        assert vim(K) == I
+
+    def test_of_I_and_M_returns_I_when_given_KI(self):
+        vim = V(I)(M)
+        assert vim(KI) == M
+
+    def test_of_n1_and_n3_returns_n1_when_given_K(self):
+        v = V(n1)(n3)
+        assert v(K) == n1
