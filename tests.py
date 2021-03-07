@@ -115,3 +115,12 @@ class Test_Church_encodings_for_numerals:
 
     def test_NOT_applied_zero_times_to_T_gives_T(self):
         assert zero(NOT)(T) == T
+
+    def test_successor_of_once_works_like_twice(self):
+        assert succ(once)(NOT)(T) == twice(NOT)(T)
+
+    def test_successor_of_zero_translates_to_python_1(self):
+        assert pynum(succ(zero)) == 1
+
+    def test_successor_of_successor_of_zero_is_2(self):
+        assert pynum(succ(succ(zero))) == 2

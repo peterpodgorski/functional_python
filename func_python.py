@@ -51,7 +51,19 @@ BEQ(F)(F) -> F(F)(NOT(F)) -> F(F)(T) -> p, being F, selects the second q, which 
 BEQ = lambda p: lambda q: p(q)(NOT(q))
 
 once = lambda f: lambda a: f(a)
+# once = lambda f: lambda a: I(f)(a)  # also once
 twice = lambda f: lambda a: f(f(a))
 thrice = lambda f: lambda a: f(f(f(a)))
 zero = lambda f: lambda a: a
 # zero = lambda f: lambda a: F(f)(a)  # also zero
+
+succ = lambda n: lambda f: lambda a: f(n(f)(a))
+
+pynum = lambda n: n(lambda x: x + 1)(0)
+
+n0 = zero
+n1 = once
+n2 = twice
+n3 = thrice
+n4 = succ(n3)
+n5 = succ(n4)
