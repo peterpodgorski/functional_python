@@ -124,3 +124,11 @@ class Test_Church_encodings_for_numerals:
 
     def test_successor_of_successor_of_zero_is_2(self):
         assert pynum(succ(succ(zero))) == 2
+
+
+class Test_function_composition_slash_pipeline:
+    def test_of_not_not_T_is_T(self):
+        assert B(NOT)(NOT)(T) == T
+
+    def test_of_succ_succ_n1_is_3_same_as_succ_of_succ_of_n1(self):
+        assert pynum(B(succ)(succ)(n1)) == pynum(succ(succ(n1))) == pynum(n3)

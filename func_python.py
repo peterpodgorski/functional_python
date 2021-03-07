@@ -67,3 +67,5 @@ n2 = twice
 n3 = thrice
 n4 = succ(n3)
 n5 = succ(n4)
+
+B = lambda f: lambda g: lambda a: f(g(a))  # B-combinator, aka Bluebird, aka composition
