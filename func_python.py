@@ -3,8 +3,9 @@ M = lambda a: a(a)  # Mockingbird, aka self-application
 K = lambda a: lambda b: a  # Kestrel (Haskell: const)
 KI = lambda a: lambda b: b  # Kite (Haskell: const id)
 # KI = lambda a: lambda b: K(I)(a)(b)  # Also Kite (KI-combinator)
-C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
 # KI = lambda a: lambda b: C(K)(a)(b)  # Also Kite
+C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
+B = lambda f: lambda g: lambda a: f(g(a))  # Bluebird, aka composition (Haskell: .)
 
 # These are obtained by translating `lambda x, y: x if x else y` into
 # pre-existing combinators
@@ -67,5 +68,3 @@ n2 = twice
 n3 = thrice
 n4 = succ(n3)
 n5 = succ(n4)
-
-B = lambda f: lambda g: lambda a: f(g(a))  # B-combinator, aka Bluebird, aka composition
