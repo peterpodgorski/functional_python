@@ -7,6 +7,10 @@ KI = lambda a: lambda b: b  # Kite (Haskell: const id)
 C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
 B = lambda f: lambda g: lambda a: f(g(a))  # Bluebird, aka composition (Haskell: .)
 Th = lambda n: lambda k: k(n)  # Thrush, aka hold an argument
+# Blackbird (Haskell: `(.) . (.)`)
+B1 = lambda f: lambda g: lambda a: lambda b: f(g(a)(b))
+# B1 = B(B)(B)  # also Blackbird, but using composition
+
 # V = lambda a: lambda b: lambda f: f(a)(b)  # Vireo (Haskell `flip . flip id`)
 V = B(C)(Th)
 
@@ -63,6 +67,8 @@ BEQ = lambda p: lambda q: p(q)(NOT(q))
 
 LEQ = lambda n: lambda k: iszero(sub(n)(k))
 EQ = lambda n: lambda k: AND(LEQ(n)(k))(LEQ(k)(n))
+GT = lambda n: lambda k: NOT(LEQ(n)(k))
+# GT = B1(NOT)(LEQ)  # Also GT but using Blackbird
 
 zero = lambda f: lambda a: a
 # zero = lambda f: lambda a: F(f)(a)  # also zero
