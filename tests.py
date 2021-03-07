@@ -101,3 +101,14 @@ class Test_equality:
 
     def test_of_F_F_is_T(self):
         assert BEQ(F)(F) == T
+
+
+class Test_cardinals:
+    def test_NOT_applied_once_to_T_gives_F(self):
+        assert once(NOT)(T) == F
+
+    def test_NOT_applied_twice_to_T_gives_T(self):
+        assert twice(NOT)(T) == T
+
+    def test_NOT_applied_thrice_to_T_gives_F(self):
+        assert thrice(NOT)(T) == F

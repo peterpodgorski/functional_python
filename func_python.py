@@ -49,3 +49,7 @@ BEQ(F)(T) -> F(T)(NOT(T)) -> F(T)(F) -> p, being F, selects the second q, which 
 BEQ(F)(F) -> F(F)(NOT(F)) -> F(F)(T) -> p, being F, selects the second q, which happens to be negated from F -> T
 """
 BEQ = lambda p: lambda q: p(q)(NOT(q))
+
+once = lambda f: lambda a: f(a)
+twice = lambda f: lambda a: f(f(a))
+thrice = lambda f: lambda a: f(f(f(a)))
