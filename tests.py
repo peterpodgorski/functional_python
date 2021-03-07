@@ -175,3 +175,10 @@ class Test_vireo_closure:
     def test_of_n1_and_n3_returns_n1_when_given_K(self):
         v = V(n1)(n3)
         assert v(K) == n1
+
+
+class Test_Phi_copies_2nd_to_2st_and_increments_2nd:  # noqa
+    def test_of_n1_and_n2_gives_n2_n3(self):
+        result = Phi(V(n1)(n2))
+        assert pynum(Fst(result)) == 2
+        assert pynum(Snd(result)) == 3

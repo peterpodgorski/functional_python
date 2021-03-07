@@ -10,6 +10,13 @@ Th = lambda n: lambda k: k(n)  # Thrush, aka hold an argument
 # V = lambda a: lambda b: lambda f: f(a)(b)  # Vireo (Haskell `flip . flip id`)
 V = B(C)(Th)
 
+# Sugar...
+Pair = V
+Fst = lambda p: p(K)
+Snd = lambda p: p(KI)
+
+Phi = lambda p: Pair(Snd(p))(succ(Snd(p)))
+
 # These are obtained by translating `lambda x, y: x if x else y` into
 # pre-existing combinators
 T = K  # True
