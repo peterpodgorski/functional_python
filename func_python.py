@@ -107,6 +107,10 @@ For n == 0, K(F) is never applied, because n0(f)(a) -> a
 """
 iszero = lambda n: n(K(F))(T)
 
+
+pred = lambda n: Fst(n(Phi)(Pair(n0)(n0)))
+sub = lambda n: lambda k: k(pred)(n)
+
 pynum = lambda n: n(lambda x: x + 1)(0)
 
 n0 = zero

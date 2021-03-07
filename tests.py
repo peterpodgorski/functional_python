@@ -182,3 +182,11 @@ class Test_Phi_copies_2nd_to_2st_and_increments_2nd:  # noqa
         result = Phi(V(n1)(n2))
         assert pynum(Fst(result)) == 2
         assert pynum(Snd(result)) == 3
+
+
+class Test_subtraction:  # noqa
+    def test_sub_5_and_1_is_4(self):
+        assert pynum(sub(n5)(n1)) == 4
+
+    def test_sub_5_and_3_is_2(self):
+        assert pynum(sub(n5)(n3)) == 2
