@@ -61,6 +61,8 @@ BEQ(F)(F) -> F(F)(NOT(F)) -> F(F)(T) -> p, being F, selects the second q, which 
 """
 BEQ = lambda p: lambda q: p(q)(NOT(q))
 
+LEQ = lambda n: lambda k: iszero(sub(n)(k))
+
 zero = lambda f: lambda a: a
 # zero = lambda f: lambda a: F(f)(a)  # also zero
 once = lambda f: lambda a: f(a)

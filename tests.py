@@ -190,3 +190,11 @@ class Test_subtraction:  # noqa
 
     def test_sub_5_and_3_is_2(self):
         assert pynum(sub(n5)(n3)) == 2
+
+
+class Test_less_equal:  # noqa
+    def test_LEQ_5_4_is_False(self):
+        assert LEQ(n5)(n4) == F
+
+    def test_LEQ_5_6_is_True(self):
+        assert LEQ(n5)(n6) == T
