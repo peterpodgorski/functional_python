@@ -147,3 +147,17 @@ class Test_multiplication:
 class Test_exponentiation:  # noqa
     def test_exp_2_and_3_is_9(self):
         assert pynum(exp(n2)(n3)) == 8
+
+
+class Test_is_zero:  # noqa
+    def test_of_0_is_true(self):
+        assert iszero(n0) == T
+
+    def test_of_1_is_false(self):
+        assert iszero(n1) == F
+
+    def test_of_2_is_false(self):
+        assert iszero(n2) == F
+
+    def test_of_3_is_false(self):
+        assert iszero(n3) == F

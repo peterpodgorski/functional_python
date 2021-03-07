@@ -52,12 +52,12 @@ BEQ(F)(F) -> F(F)(NOT(F)) -> F(F)(T) -> p, being F, selects the second q, which 
 """
 BEQ = lambda p: lambda q: p(q)(NOT(q))
 
+zero = lambda f: lambda a: a
+# zero = lambda f: lambda a: F(f)(a)  # also zero
 once = lambda f: lambda a: f(a)
 # once = lambda f: lambda a: I(f)(a)  # also once
 twice = lambda f: lambda a: f(f(a))
 thrice = lambda f: lambda a: f(f(f(a)))
-zero = lambda f: lambda a: a
-# zero = lambda f: lambda a: F(f)(a)  # also zero
 
 succ = lambda n: lambda f: lambda a: f(n(f)(a))
 
@@ -89,6 +89,14 @@ mul = B
 Defined as the Th-combinator
 """
 exp = Th
+
+"""
+This works because for n > 0 K(F) is applied to T multiple times like:
+K(F)(T), but K always selects first argument.
+
+For n == 0, K(F) is never applied, because n0(f)(a) -> a
+"""
+iszero = lambda n: n(K(F))(T)
 
 pynum = lambda n: n(lambda x: x + 1)(0)
 
