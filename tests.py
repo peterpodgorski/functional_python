@@ -13,6 +13,8 @@ C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
 T = K  # True
 F = KI  # False
 
+Not = lambda b: b(F)(T)  # where b is T or F
+
 
 def test_identity_or_1_is_1():
     assert I(1) == 1
@@ -43,3 +45,11 @@ class Test_Kite_gives_back_second_argument:
 class Test_Cardinal_flips_arguments_around:
     def test_of_K_I_M_calls_K_of_M_I_which_is_M(self):
         assert C(K)(I)(M) == M
+
+
+class Test_negation_selects_the_other_boolean:
+    def test_of_T_is_F(self):
+        assert Not(T) == F
+
+    def test_of_F_is_T(self):
+        assert Not(F) == T
