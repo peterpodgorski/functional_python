@@ -7,6 +7,8 @@ KI = lambda a: lambda b: b  # Kite (Haskell: const id)
 C = lambda f: lambda a: lambda b: f(b)(a)  # Cardinal (Haskell: flip)
 B = lambda f: lambda g: lambda a: f(g(a))  # Bluebird, aka composition (Haskell: .)
 Th = lambda n: lambda k: k(n)  # Thrush, aka hold an argument
+# V = lambda a: lambda b: lambda f: f(a)(b)  # Vireo (Haskell `flip . flip id`)
+V = B(C)(Th)
 
 # These are obtained by translating `lambda x, y: x if x else y` into
 # pre-existing combinators
@@ -110,6 +112,3 @@ n6 = succ(n5)
 n7 = add(n3)(n4)
 n8 = add(n4)(n4)
 n9 = add(n4)(n5)
-
-
-V = lambda a: lambda b: lambda f: f(a)(b)
